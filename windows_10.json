@@ -144,7 +144,7 @@
     "iso_checksum_type": "sha1",
     "iso_checksum": "56ab095075be28a90bc0b510835280975c6bb2ce",
     "autounattend": "./answer_files/10/Autounattend.xml",
-    "headless": "true",
+    "headless": "false",
     "cpus": "2",
     "memory_size": "4096",
     "vram": "128",
