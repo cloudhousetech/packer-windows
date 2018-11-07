@@ -9,7 +9,7 @@
       "boot_wait": "2m",
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
-      "ssh_wait_timeout": "8h",
+      "ssh_wait_timeout": "12h",
       "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
       "guest_os_type": "windows7-64",
       "tools_upload_flavor": "windows",
@@ -41,7 +41,7 @@
       "boot_wait": "2m",
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
-      "ssh_wait_timeout": "8h",
+      "ssh_wait_timeout": "12h",
       "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
       "guest_os_type": "Windows7_64",
       "disk_size": "{{user `disk_size`}}",
@@ -54,18 +54,9 @@
         "./scripts/openssh.ps1"
       ],
       "vboxmanage": [
-        [
-          "modifyvm",
-          "{{.Name}}",
-          "--memory",
-          "{{user `memory_size`}}"
-        ],
-        [
-          "modifyvm",
-          "{{.Name}}",
-          "--cpus",
-          "{{user `cpus`}}"
-        ]
+        [ "modifyvm", "{{.Name}}", "--memory", "{{user `memory_size`}}" ],
+        [ "modifyvm", "{{.Name}}", "--cpus", "{{user `cpus`}}" ],
+        [ "modifyvm", "{{.Name}}", "--vram", "{{user `vram`}}" ]
       ]
     },
     {
@@ -76,7 +67,7 @@
       "boot_wait": "2m",
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
-      "ssh_wait_timeout": "8h",
+      "ssh_wait_timeout": "12h",
       "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
       "guest_os_type": "win-7",
       "parallels_tools_flavor": "win",
@@ -131,18 +122,20 @@
     {
       "type": "vagrant",
       "keep_input_artifact": false,
-      "output": "windows_7_{{.Provider}}.box",
+      "output": "win7-{{.Provider}}-v{{user `version`}}.box",
       "vagrantfile_template": "vagrantfile-windows_7.template"
     }
   ],
   "variables": {
-    "iso_url": "http://care.dlservice.microsoft.com/dl/download/evalx/win7/x64/EN/7600.16385.090713-1255_x64fre_enterprise_en-us_EVAL_Eval_Enterprise-GRMCENXEVAL_EN_DVD.iso",
-    "iso_checksum_type": "md5",
-    "iso_checksum": "1d0d239a252cb53e466d39e752b17c28",
+    "iso_url": "D:\\en_windows_7_enterprise_with_sp1_x64_dvd_u_677651.iso",
+    "iso_checksum_type": "sha1",
+    "iso_checksum": "A491F985DCCFB5863F31B728DDDBEDB2FF4DF8D1",
     "autounattend": "./answer_files/7/Autounattend.xml",
-    "headless": "true",
+    "headless": "false",
     "cpus": "2",
-    "memory_size": "2048",
-    "disk_size": "61440"
+    "memory_size": "4096",
+    "disk_size": "61440",
+    "vram": "128",
+    "version": "0.0.1"
   }
 }

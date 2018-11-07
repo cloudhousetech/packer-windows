@@ -135,7 +135,7 @@
     {
       "type": "vagrant",
       "keep_input_artifact": false,
-      "output": "windows_10_{{.Provider}}.box",
+      "output": "win10-{{.Provider}}-v{{user `version`}}.box",
       "vagrantfile_template": "vagrantfile-windows_10.template"
     }
   ],
@@ -148,6 +148,7 @@
     "cpus": "2",
     "memory_size": "4096",
     "vram": "128",
-    "disk_size": "61440"
+    "disk_size": "61440",
+    "version": "0.0.2"
   }
 }
