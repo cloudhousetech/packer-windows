@@ -11,7 +11,7 @@
       "ssh_password": "vagrant",
       "ssh_wait_timeout": "12h",
       "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
-      "guest_os_type": "Windows7_32",
+      "guest_os_type": "Windows7",
       "disk_size": "{{user `disk_size`}}",
       "floppy_files": [
         "{{user `autounattend`}}",
@@ -34,12 +34,12 @@
       "remote_path": "/tmp/script.bat",
       "execute_command": "{{.Vars}} cmd /c C:/Windows/Temp/script.bat",
       "scripts": [
-        "./scripts/vm-guest-tools.bat",
+        "./scripts/vm-guest-tools-32.bat",
         "./scripts/vagrant-ssh.bat",
         "./scripts/disable-auto-logon.bat",
         "./scripts/enable-rdp.bat",
         "./scripts/compile-dotnet-assemblies.bat",
-        "./scripts/compact.bat"
+        "./scripts/compact-32.bat"
       ]
     }
   ],
@@ -52,9 +52,9 @@
     }
   ],
   "variables": {
-    "iso_url": "D:\\en_windows_7_enterprise_x86_dvd_x15-70745.iso",
+    "iso_url": "D:\\en_windows_7_enterprise_with_sp1_AprilCU_x86_dvd_u_677710.iso",
     "iso_checksum_type": "sha1",
-    "iso_checksum": "C6B905E48FDB6CB5BFCA967715A64461B812D40C",
+    "iso_checksum": "0015FCDEB9E22F44ADCD524CE982E3827BE593FC",
     "autounattend": "./answer_files/732/Autounattend.xml",
     "headless": "false",
     "cpus": "2",
