@@ -227,8 +227,8 @@
                     <Description>Disable password expiration for vagrant user</Description>
                 </SynchronousCommand>
                 <!-- WITHOUT WINDOWS UPDATES -->
-                <!--
-                <SynchronousCommand wcm:action="add">
+                
+                <!-- <SynchronousCommand wcm:action="add">
                     <CommandLine>cmd.exe /c C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File a:\dis-updates.ps1</CommandLine>
                     <Description>Disable Automatic Updates</Description>
                     <Order>96</Order>
@@ -239,8 +239,8 @@
                     <Description>Install OpenSSH</Description>
                     <Order>99</Order>
                     <RequiresUserInput>true</RequiresUserInput>
-                </SynchronousCommand>
-                -->
+                </SynchronousCommand> -->
+                
                 <!-- END WITHOUT WINDOWS UPDATES -->
                 <!-- WITH WINDOWS UPDATES -->
                 <!-- Disable automatic updates so the system update process doesn't interfere with the update script -->
@@ -255,7 +255,7 @@
                     <Description>Enable Microsoft Updates</Description>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
-                    <CommandLine>cmd.exe /c C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File a:\win-updates.ps1 -MaxUpdatesPerCycle 100 -RestartRequired 1</CommandLine>
+                    <CommandLine>cmd.exe /c C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File a:\win-updates.ps1 -MaxUpdatesPerCycle 200 -RestartRequired 1</CommandLine>
                     <Description>Install Windows Updates</Description>
                     <Order>100</Order>
                     <RequiresUserInput>true</RequiresUserInput>

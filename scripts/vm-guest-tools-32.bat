@@ -43,4 +43,4 @@ if exist "C:\Users\vagrant\prl-tools-win.iso" (
 )
 
 :done
-msiexec /qb /x C:\Windows\Temp\7z920-x64.msi
+msiexec /qb /x C:\Windows\Temp\7z920.msi
