@@ -132,7 +132,7 @@
                     <RequiresUserInput>true</RequiresUserInput>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
-                    <CommandLine>cmd.exe /c winrm set winrm/config/winrs @{MaxMemoryPerShellMB="800"}</CommandLine>
+                    <CommandLine>cmd.exe /c winrm set winrm/config/winrs @{MaxMemoryPerShellMB="2048"}</CommandLine>
                     <Description>Win RM MaxMemoryPerShellMB</Description>
                     <Order>5</Order>
                     <RequiresUserInput>true</RequiresUserInput>
@@ -244,6 +244,7 @@
                 <!-- END WITHOUT WINDOWS UPDATES -->
                 <!-- WITH WINDOWS UPDATES -->
                 <!-- Disable automatic updates so the system update process doesn't interfere with the update script -->
+
                 <SynchronousCommand wcm:action="add">
                     <CommandLine>cmd.exe /c a:\hotfix-KB3102810.bat</CommandLine>
                     <Order>97</Order>
@@ -260,6 +261,7 @@
                     <Order>100</Order>
                     <RequiresUserInput>true</RequiresUserInput>
                 </SynchronousCommand>
+
                 <!-- END WITH WINDOWS UPDATES -->
             </FirstLogonCommands>
             <ShowWindowsLive>false</ShowWindowsLive>
