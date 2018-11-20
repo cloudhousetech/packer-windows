@@ -61,6 +61,6 @@
     "memory_size": "4096",
     "disk_size": "61440",
     "vram": "128",
-    "version": "0.0.2"
+    "version": "0.0.3"
   }
 }
