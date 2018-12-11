@@ -140,15 +140,15 @@
     }
   ],
   "variables": {
-    "iso_url": "D:\\en-gb_windows_10_enterprise_version_1703_updated_june_2017_x64_dvd_10721581.iso",
+    "iso_url": "D:\\SW_DVD9_Win_Pro_Ent_Edu_N_10_1809_64-bit_English_International_MLF_X21-96503.ISO",
     "iso_checksum_type": "sha1",
-    "iso_checksum": "FD56BD84C355225F262BCFF3542F359EE2EBC42C",
+    "iso_checksum": "AC4506A86FA8013D59D5250949A8FC10490C0DB6",
     "autounattend": "./answer_files/10/Autounattend.xml",
     "headless": "false",
     "cpus": "2",
     "memory_size": "4096",
     "vram": "128",
     "disk_size": "61440",
-    "version": "0.0.3"
+    "version": "0.1809.0"
   }
 }
