@@ -39,7 +39,7 @@
       "boot_wait": "2m",
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
-      "ssh_wait_timeout": "2h",
+      "ssh_wait_timeout": "6h",
       "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
       "guest_os_type": "Windows81_64",
       "disk_size": "{{user `disk_size`}}",
@@ -61,6 +61,12 @@
           "{{.Name}}",
           "--cpus",
           "{{user `cpus`}}"
+        ],
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--vram",
+          "{{user `vram`}}"
         ]
       ]
     },
@@ -126,18 +132,20 @@
     {
       "type": "vagrant",
       "keep_input_artifact": false,
-      "output": "windows_81_{{.Provider}}.box",
+      "output": "win81-{{.Provider}}-v{{user `version`}}.box",
       "vagrantfile_template": "vagrantfile-windows_81.template"
     }
   ],
   "variables": {
-    "iso_url": "http://download.microsoft.com/download/B/9/9/B999286E-0A47-406D-8B3D-5B5AD7373A4A/9600.16384.WINBLUE_RTM.130821-1623_X64FRE_ENTERPRISE_EVAL_EN-US-IRM_CENA_X64FREE_EN-US_DV5.ISO",
-    "iso_checksum_type": "md5",
-    "iso_checksum": "5e4ecb86fd8619641f1d58f96e8561ec",
+    "iso_url": "D:\\en-gb_windows_8.1_enterprise_with_update_x64_dvd_6054383.iso",
+    "iso_checksum_type": "sha1",
+    "iso_checksum": "57B4B64E1FAA72014E3D691E8EFB18A983082391",
     "autounattend": "./answer_files/81/Autounattend.xml",
-    "headless": "true",
+    "headless": "false",
     "cpus": "2",
-    "memory_size": "2048",
-    "disk_size": "61440"
+    "vram": "128",
+    "memory_size": "4096",
+    "disk_size": "61440",
+    "version": "0.0.1"
   }
 }
