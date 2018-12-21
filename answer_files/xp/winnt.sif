@@ -1,0 +1,53 @@
+;SetupMgrTag
+[Data]
+    AutoPartition=1
+    MsDosInitiated="0"
+    UnattendedInstall="Yes"
+
+[Unattended]
+    UnattendMode=FullUnattended
+    UnattendSwitch=yes
+    OemSkipEula=Yes
+    OemPreinstall=No
+    TargetPath=\WINDOWS
+    Repartition=Yes
+
+[GuiUnattended]
+    AdminPassword="vagrant"
+    EncryptedAdminPassword=NO
+    AutoLogon=Yes
+    AutoLogonCount=2
+    OEMSkipRegional=1
+    TimeZone=85
+    OemSkipWelcome=1
+
+[UserData]
+    ProductKey=key here
+    FullName="vagrant"
+    OrgName="vagrant"
+    ComputerName=vagrant-xp
+
+[Display]
+    BitsPerPel = 32
+    XResolution = 1024
+    YResolution = 768
+    VRefresh = 60
+    Flags = 0
+    AutoConfirm = 1
+
+[RegionalSettings]
+    LanguageGroup=1
+    Language=00000809
+
+[Identification]
+    JoinWorkgroup=WORKGROUP
+
+[Networking]
+    InstallDefaultComponents=Yes
+
+[GuiRunOnce]
+    Command0=A:\dotnet2.bat
+    Command1=A:\KB968930.bat
+    Command2=A:\dotnet4.bat
+    Command3="cmd.exe /c C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe Set-ExecutionPolicy Bypass"
+    Command4="cmd.exe /c C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File a:\openssh.ps1 -AutoStart"

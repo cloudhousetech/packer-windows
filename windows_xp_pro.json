@@ -1,0 +1,67 @@
+{
+  "builders": [
+    {
+      "type": "virtualbox-iso",
+      "iso_url": "{{user `iso_url`}}",
+      "iso_checksum_type": "{{user `iso_checksum_type`}}",
+      "iso_checksum": "{{user `iso_checksum`}}",
+      "headless": "{{user `headless`}}",
+      "boot_wait": "2m",
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant",
+      "ssh_wait_timeout": "4h",
+      "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
+      "guest_os_type": "WindowsXP",
+      "disk_size": "{{user `disk_size`}}",
+      "floppy_files": [
+        "{{user `autounattend`}}",
+        "./answer_files/xp/unattend.bat",
+        "./scripts/KB968930.bat",
+        "./scripts/openssh.ps1",
+        "./scripts/dotnet4.bat",
+        "./scripts/dotnet2.bat"
+      ],
+      "vboxmanage": [
+        [ "modifyvm", "{{.Name}}", "--memory", "{{user `memory_size`}}" ],
+        [ "modifyvm", "{{.Name}}", "--cpus", "{{user `cpus`}}" ],
+        [ "modifyvm", "{{.Name}}", "--vram", "{{user `vram`}}" ],
+        [ "storageattach", "{{.Name}}", "--storagectl", "IDE Controller", "--port", "1", "--device", "0", "--type", "dvddrive", "--medium", "./files/hotfixes.iso" ]
+      ]
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "remote_path": "/tmp/script.bat",
+      "execute_command": "{{.Vars}} cmd /c C:/Windows/Temp/script.bat",
+      "scripts": [
+        "./scripts/vm-guest-tools-32.bat",
+        "./scripts/vagrant-ssh.bat",
+        "./scripts/disable-auto-logon.bat",
+        "./scripts/enable-rdp.bat",
+        "./scripts/compile-dotnet-assemblies.bat",
+        "./scripts/compact-32.bat"
+      ]
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "vagrant",
+      "keep_input_artifact": false,
+      "output": "winxp-pro-{{.Provider}}-v{{user `version`}}.box",
+      "vagrantfile_template": "vagrantfile-windows_xp.template"
+    }
+  ],
+  "variables": {
+    "iso_url": "D:\\en_windows_xp_professional_with_service_pack_3_x86_cd_x14-80428.iso",
+    "iso_checksum_type": "sha1",
+    "iso_checksum": "1C735B38931BF57FB14EBD9A9BA253CEB443D459",
+    "autounattend": "./answer_files/xp/winnt.sif",
+    "headless": "false",
+    "cpus": "1",
+    "memory_size": "2048",
+    "disk_size": "40960",
+    "vram": "64",
+    "version": "0.0.1"
+  }
+}
